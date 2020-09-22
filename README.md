@@ -45,7 +45,7 @@ $latin = "Da l' si ikada mene voljela?";
 
 $cyrillic = Transliterator::lat_to_cir($latin);
 echo $cyrillic
-
+?>
 ```
 
 ### Output

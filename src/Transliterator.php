@@ -85,22 +85,22 @@ class Transliterator
         'Dži' => 'Џи','Džo' => 'Џо','Džu' => 'Џу'
     ];
 
-    public static function lat_to_cut_lat(string $text)
+    public static function lat_to_cut_lat(?string $text = '')
     {
         return strtr($text,self::$cut_lat_replace);
     }
 
-    public static function cir_to_cut_lat(string $text)
+    public static function cir_to_cut_lat(?string $text = '')
     {
         return strtr($text,self::$cut_replace); 
     }
 
-    public static function cir_to_lat(string $text)
+    public static function cir_to_lat(?string $text = '')
     {
         return strtr($text,self::$replace);
     }
 
-    public static function lat_to_cir(string $text)
+    public static function lat_to_cir(?string $text = '')
     {
         return strtr($text,self::$reverse);
     }
