@@ -1,7 +1,5 @@
 # Transliterator: Simple class to convert serbian words in cyrillic script to latin and vice-versa
 
-A project done by [Sibin Grasic](https://sgi.io)
-
 ## About
 
 Transliterator is an easy-to-use class for PHP.

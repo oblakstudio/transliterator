@@ -1,60 +1,63 @@
 <?php
+// @codingStandardsIgnoreFile
 
 declare(strict_types=1);
 
-use SGI\Transliterator;
-
+use Oblak\Transliterator;
 use PHPUnit\Framework\TestCase;
 
-final class TransliteratorTest extends TestCase
-{
-
-    public function test_lat_to_cut_lat()
-    {
-
-        $this->assertEquals(
-            'A, B, V, G, D, Dj, E, Z, Z, I, J, K, L, LJ, M, N, NJ, O, P, R, S, T, C, U, F, H, C, C, Dz, S',
-            Transliterator::lat_to_cut_lat(
-                'A, B, V, G, D, Đ, E, Ž, Z, I, J, K, L, LJ, M, N, NJ, O, P, R, S, T, Ć, U, F, H, C, Č, DŽ, Š'
-            )
-        );
-
+final class TransliteratorTest extends TestCase {
+    /**
+     * Test that the transliteration from cyrilic to latin works as expected.
+     *
+     * @dataProvider textProvider
+     */
+    public function test_cirToLat($cyrilic_text, $latin_text) {
+        $this->assertEquals($latin_text, Transliterator::cirToLat($cyrilic_text));
     }
 
-    public function test_cir_to_cut_lat()
-    {
-
-        $this->assertEquals(
-            'A, B, V, G, D, Dj, E, Z, Z, I, J, K, L, LJ, M, N, NJ, O, P, R, S, T, C, U, F, H, C, C, Dz, S',
-            Transliterator::cir_to_cut_lat(
-                'А, Б, В, Г, Д, Ђ, Е, Ж, З, И, Ј, К, Л, Љ, М, Н, Њ, О, П, Р, С, Т, Ћ, У, Ф, Х, Ц, Ч, Џ, Ш'
-            )
-        );
-
+    /**
+     * Test that the transliteration from latin to cyrilic works as expected.
+     *
+     * @dataProvider textProvider
+     */
+    public function test_latToCir($cyrilic_text, $latin_text) {
+        $this->assertEquals($cyrilic_text, Transliterator::latToCir($latin_text));
     }
 
-    public function test_cir_to_lat()
-    {
-
-        $this->assertEquals(
-            'A, B, V, G, D, Đ, E, Ž, Z, I, J, K, L, LJ, M, N, NJ, O, P, R, S, T, Ć, U, F, H, C, Č, DŽ, Š',
-            Transliterator::cir_to_lat(
-                'А, Б, В, Г, Д, Ђ, Е, Ж, З, И, Ј, К, Л, Љ, М, Н, Њ, О, П, Р, С, Т, Ћ, У, Ф, Х, Ц, Ч, Џ, Ш'
-            )
-        );
-
+    /**
+     * Test that the transliteration from latin to cut latin works as expected.
+     *
+     * @dataProvider textProvider
+     */
+    public function test_latToCutLat($cyrilic_text, $latin_text, $cut_latin_text) {
+        $this->assertEquals($cut_latin_text, Transliterator::latToCutLat($latin_text));
     }
 
-    public function test_lat_to_cir()
-    {
-
-        $this->assertEquals(
-            'А, Б, В, Г, Д, Ђ, Е, Ж, З, И, Ј, К, Л, Љ, М, Н, Њ, О, П, Р, С, Т, Ћ, У, Ф, Х, Ц, Ч, Џ, Ш',
-            Transliterator::lat_to_cir('A, B, V, G, D, Đ, E, Ž, Z, I, J, K, L, LJ, M, N, NJ, O, P, R, S, T, Ć, U, F, H, C, Č, DŽ, Š')
-        );
-
+    /**
+     * Test that the transliteration from cyrilic to cut latin works as expected.
+     *
+     * @dataProvider textProvider
+     */
+    public function test_cirToCutLat($cyrilic_text, $latin_text, $cut_latin_text) {
+        $this->assertEquals($cut_latin_text, Transliterator::cirToCutLat($cyrilic_text));
     }
 
+    public function textProvider() {
+        $textFiles = [
+            'text2',
+        ];
 
+        $texts = [];
 
+        foreach ($textFiles as $textFile) {
+            $texts[$textFile] = [
+                file_get_contents(__DIR__ . '/' . $textFile . '-cir.txt'),
+                file_get_contents(__DIR__ . '/' . $textFile . '-lat.txt'),
+                file_get_contents(__DIR__ . '/' . $textFile . '-cut-lat.txt'),
+            ];
+        }
+
+        return $texts;
+    }
 }

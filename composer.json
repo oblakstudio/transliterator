@@ -1,21 +1,24 @@
 {
-    "name": "sgi/transliterator",
+    "name": "oblak/transliterator",
     "description": "This Module Transliterates Cyrillic to Latin script",
+    "authors": [
+      {
+          "name": "Sibin Grasic",
+          "email": "sibin.grasic@oblak.studio"
+      }
+    ],
+    "license": "GPL-2.0-only",
+    "version": "1.0.0",
     "type": "library",
+    "require": {
+      "php" : ">= 7.2"
+    },
     "require-dev": {
-        "phpunit/phpunit": "6"
+        "phpunit/phpunit": "^9"
     },
     "autoload": {
         "psr-4": {
-            "SGI\\": "src/"   
+            "Oblak\\": "src/"
         }
-    },
-    "license": "GPL-2.0-only",
-    "authors": [
-        {
-            "name": "Sibin Grasic",
-            "email": "sg@sgi.io"
-        }
-    ],
-    "minimum-stability": "stable"
+    }
 }
