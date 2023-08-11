@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/oblakstudio/transliterator/compare/v1.0.0...v2.0.0) (2023-08-11)
+
+
+### Features
+
+* Reworked the library ([d8bdaa7](https://github.com/oblakstudio/transliterator/commit/d8bdaa74d740f7aca8bfa5e7a3d45e74f82d0ed3))
+
+
+### BREAKING CHANGES
+
+* Class is now a singleton
+
 # 1.0.0 (2021-11-25)
 
 
