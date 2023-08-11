@@ -15,18 +15,30 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "sed -i 's/0.0.0/${nextRelease.version}/g' composer.json"
+        "prepareCmd": "sh ./.github/scripts/release.sh ${nextRelease.version}"
       }
     ],
     [
       "@semantic-release/git",
       {
         "assets": [
-          "CHANGELOG.md"
+          "CHANGELOG.md",
+          "composer.json"
         ],
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ],
-    "@semantic-release/github"
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "/tmp/release.zip",
+            "name": "transliterator-${nextRelease.version}",
+            "label": "Transliterator v${nextRelease.version}"
+          }
+        ]
+      }
+    ]
   ]
 }
