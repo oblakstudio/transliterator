@@ -5,11 +5,14 @@ namespace Oblak;
 /**
  * Transliterator class
  */
-class Transliterator {
+class Transliterator
+{
     /**
-     * @var array Replace pairs for cyrilic to latin conversion
+     * Replace pairs for cyrilic to latin conversion
+     *
+     * @var string[]
      */
-    private static $replacePairs = [
+    private $replacePairs = [
         "А"  => "A",
         "Б"  => "B",
         "В"  => "V",
@@ -90,9 +93,11 @@ class Transliterator {
     ];
 
     /**
-     * @var array Additional replace pairs for cyrilic to cut latin conversion
+     * Additional replace pairs for cyrilic to cut latin conversion
+     *
+     * @var array
      */
-    private static $cutReplacePairs = [
+    private $cutReplacePairs = [
         'Ђ'   => 'Dj',
         'Ж'   => 'Z',
         'Ч'   => 'C',
@@ -113,9 +118,11 @@ class Transliterator {
     ];
 
     /**
-     * @var array Replace pairs for latin to cut latin conversion
+     * Replace pairs for latin to cut latin conversion
+     *
+     * @var array
      */
-    private static $cutLatinChars = [
+    private $cutLatinChars = [
         'DŽ' => 'Dz',
         'Dž' => 'Dz',
         'dž' => 'dz',
@@ -132,13 +139,42 @@ class Transliterator {
     ];
 
     /**
+     * Instance of Transliterator
+     *
+     * @var Transliterator
+     */
+    private static $instance = null;
+
+    /**
+     * Private constructor
+     */
+    private function __construct()
+    {
+    }
+
+    /**
+     * Get the class instance
+     *
+     * @return Transliterator
+     */
+    public static function instance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new Transliterator();
+        }
+
+        return self::$instance;
+    }
+
+    /**
      * Converts cyrilic string to latin
      *
      * @param  string $text Cyrilic string to convert
      * @return string       Latin string
      */
-    public static function cirToLat($text = '') {
-        return strtr($text, self::$replacePairs);
+    public function cirToLat($text = '')
+    {
+        return strtr($text, $this->replacePairs);
     }
 
     /**
@@ -147,8 +183,9 @@ class Transliterator {
      * @param  string $text Latin string to convert
      * @return string       Cyrilic string
      */
-    public static function latToCir($text = '') {
-        return strtr($text, array_flip(self::$replacePairs));
+    public function latToCir($text = '')
+    {
+        return strtr($text, array_flip($this->replacePairs));
     }
 
     /**
@@ -157,8 +194,9 @@ class Transliterator {
      * @param  string $text Cyrilic string to convert
      * @return string       Latin string with cut chars
      */
-    public static function cirToCutLat($text = '') {
-        return strtr($text, array_merge(self::$replacePairs, self::$cutReplacePairs));
+    public function cirToCutLat($text = '')
+    {
+        return strtr($text, array_merge($this->replacePairs, $this->cutReplacePairs));
     }
 
     /**
@@ -167,7 +205,8 @@ class Transliterator {
      * @param  string $text Latin string to convert
      * @return string       Latin string with cut chars
      */
-    public static function latToCutLat($text = '') {
-        return strtr($text, self::$cutLatinChars);
+    public function latToCutLat($text = '')
+    {
+        return strtr($text, $this->cutLatinChars);
     }
 }

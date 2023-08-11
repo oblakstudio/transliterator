@@ -12,7 +12,7 @@ It was made to be a class that you could quickly include into a project and have
 From the Command Line:
 
 ```
-composer require sgi/transliterator --prefer-dist
+composer require oblak/transliterator --prefer-dist
 ```
 
 In your `composer.json`:
@@ -20,7 +20,7 @@ In your `composer.json`:
 ``` json
 {
     "require": {
-        "sgi/transliterator": "1.0"
+        "oblak/transliterator": "1.0"
     }
 }
 ```
@@ -32,18 +32,19 @@ In your `composer.json`:
 
 require 'vendor/autoload.php';
 
-use SGI\Transliterator;
+use Oblak\Transliterator;
+
+$transliterator = Transliterator::instance();
 
 $cyrillic = 'Четири Чавчића риби гризу реп!';
 
-$latin = Transliterator::cir_to_lat($cyrillic);
+$latin = $transliterator->cir_to_lat($cyrillic);
 echo $latin;
 
 $latin = "Da l' si ikada mene voljela?";
 
-$cyrillic = Transliterator::lat_to_cir($latin);
-echo $cyrillic
-?>
+$cyrillic = $transliterator->lat_to_cir($latin);
+echo $cyrillic;
 ```
 
 ### Output
