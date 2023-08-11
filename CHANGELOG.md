@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/oblakstudio/transliterator/compare/v2.0.1...v2.0.2) (2023-08-11)
+
+
+### Bug Fixes
+
+* Added the replacement ([6008238](https://github.com/oblakstudio/transliterator/commit/6008238579e0c3500e0d27b2498861b8bf3c65ba))
+
 ## [2.0.1](https://github.com/oblakstudio/transliterator/compare/v2.0.0...v2.0.1) (2023-08-11)
 
 
