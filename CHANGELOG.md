@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/oblakstudio/transliterator/compare/v2.0.0...v2.0.1) (2023-08-11)
+
+
+### Bug Fixes
+
+* Fixed the composer lock file ([4365585](https://github.com/oblakstudio/transliterator/commit/4365585eb1d03962c403c9cc7bff09a972dc40f9))
+* Fixed the composer lock file and release process ([f6e2a1a](https://github.com/oblakstudio/transliterator/commit/f6e2a1a312fa716538a6e1088af14aee29fbf22d))
+
 # [2.0.0](https://github.com/oblakstudio/transliterator/compare/v1.0.0...v2.0.0) (2023-08-11)
 
 
