@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/oblakstudio/transliterator/compare/v2.0.2...v3.0.0) (2024-01-18)
+
+
+### Features
+
+* Code standardization ([984086e](https://github.com/oblakstudio/transliterator/commit/984086e396506340691ae22ee49a9b05c1203eae))
+
+
+### BREAKING CHANGES
+
+* Api reverted back to static call
+
 ## [2.0.2](https://github.com/oblakstudio/transliterator/compare/v2.0.1...v2.0.2) (2023-08-11)
 
 
