@@ -12,7 +12,7 @@ final class TransliteratorTest extends TestCase
      */
     public function test_cirToLat($cyrilic_text, $latin_text)
     {
-        $this->assertEquals($latin_text, Transliterator::instance()->cirToLat($cyrilic_text));
+        $this->assertEquals($latin_text, Transliterator::cirToLat($cyrilic_text));
     }
 
     /**
@@ -22,7 +22,7 @@ final class TransliteratorTest extends TestCase
      */
     public function test_latToCir($cyrilic_text, $latin_text)
     {
-        $this->assertEquals($cyrilic_text, Transliterator::instance()->latToCir($latin_text));
+        $this->assertEquals($cyrilic_text, Transliterator::latToCir($latin_text));
     }
 
     /**
@@ -32,7 +32,7 @@ final class TransliteratorTest extends TestCase
      */
     public function test_latToCutLat($cyrilic_text, $latin_text, $cut_latin_text)
     {
-        $this->assertEquals($cut_latin_text, Transliterator::instance()->latToCutLat($latin_text));
+        $this->assertEquals($cut_latin_text, Transliterator::latToCutLat($latin_text));
     }
 
     /**
@@ -42,7 +42,7 @@ final class TransliteratorTest extends TestCase
      */
     public function test_cirToCutLat($cyrilic_text, $latin_text, $cut_latin_text)
     {
-        $this->assertEquals($cut_latin_text, Transliterator::instance()->cirToCutLat($cyrilic_text));
+        $this->assertEquals($cut_latin_text, Transliterator::cirToCutLat($cyrilic_text));
     }
 
     public function textProvider()

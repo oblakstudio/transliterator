@@ -7,24 +7,11 @@ It was made to be a class that you could quickly include into a project and have
 
 ## Installation
 
-### Composer
-
-From the Command Line:
+### Via Composer
 
 ```
-composer require oblak/transliterator --prefer-dist
+composer require oblak/transliterator
 ```
-
-In your `composer.json`:
-
-``` json
-{
-    "require": {
-        "oblak/transliterator": "1.0"
-    }
-}
-```
-
 ## Basic Usage
 
 ``` php
@@ -34,17 +21,8 @@ require 'vendor/autoload.php';
 
 use Oblak\Transliterator;
 
-$transliterator = Transliterator::instance();
-
-$cyrillic = 'Четири Чавчића риби гризу реп!';
-
-$latin = $transliterator->cir_to_lat($cyrillic);
-echo $latin;
-
-$latin = "Da l' si ikada mene voljela?";
-
-$cyrillic = $transliterator->lat_to_cir($latin);
-echo $cyrillic;
+echo Transliterator::cirToLat('Четири Чавчића риби гризу реп!');
+echo Transliterator::latToCir("Da l' si ikada mene voljela?");
 ```
 
 ### Output
@@ -53,10 +31,3 @@ echo $cyrillic;
 Četiri Čavčića ribi grizu rep
 Да л' си икада мене вољела?
 ```
-
-## License
-
-GPLv2
-
-You may copy, distribute and modify the software as long as you track changes/dates in source files. Any modifications to or software including (via compiler) GPL-licensed code must also be made available under the GPL along with build & install instructions.
-
