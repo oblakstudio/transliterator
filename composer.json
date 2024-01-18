@@ -1,7 +1,7 @@
 {
   "name": "oblak/transliterator",
   "description": "This Module Transliterates Cyrillic to Latin script",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "authors": [
     {
       "name": "Sibin Grasic",
