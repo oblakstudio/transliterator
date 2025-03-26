@@ -1,4 +1,4 @@
-<?php
+<?php //phpcs:disable SlevomatCodingStandard.Arrays.AlphabeticallySortedByKeys.IncorrectKeyOrder
 
 /**
  * Transliterator class file.
@@ -8,8 +8,10 @@
 
 namespace Oblak;
 
+use Stringable;
+
 /**
- * Transliterator class
+ * Transliterates from cyrilic to latin and vice versa.
  */
 class Transliterator
 {
@@ -18,7 +20,7 @@ class Transliterator
      *
      * @var array<string, string>
      */
-    private static array $replacePairs = [
+    public const REPLACE_PAIRS = [
         'А'  => 'A',
         'Б'  => 'B',
         'В'  => 'V',
@@ -40,7 +42,6 @@ class Transliterator
         'П'  => 'P',
         'Р'  => 'R',
         'С'  => 'S',
-        'Ш'  => 'Š',
         'Т'  => 'T',
         'Ћ'  => 'Ć',
         'У'  => 'U',
@@ -71,7 +72,6 @@ class Transliterator
         'п'  => 'p',
         'р'  => 'r',
         'с'  => 's',
-        'ш'  => 'š',
         'т'  => 't',
         'ћ'  => 'ć',
         'у'  => 'u',
@@ -99,11 +99,13 @@ class Transliterator
     ];
 
     /**
-     * Additional replace pairs for cyrilic to cut latin conversion
+     * Additional replace pairs for cyrilic to international latin conversion.
      *
-     * @var array<string, string>
+     * These do not contain diacritics, so they can be used in URLs.
+     *
+     * @var array<string,string>
      */
-    private static array $cutReplacePairs = [
+    public const REPLACE_PAIRS_INTL = [
         'Ђ'  => 'Dj',
         'Ж'  => 'Z',
         'Ч'  => 'C',
@@ -124,11 +126,11 @@ class Transliterator
     ];
 
     /**
-     * Replace pairs for latin to cut latin conversion
+     * Replace pairs for latin to international latin conversion
      *
      * @var array<string, string>
      */
-    private static array $cutLatinChars = [
+    public const  LATIN_PAIRS_INTL = [
         'DŽ' => 'Dz',
         'Dž' => 'Dz',
         'dž' => 'dz',
@@ -147,44 +149,49 @@ class Transliterator
     /**
      * Converts cyrilic string to latin
      *
-     * @param  string $text Cyrilic string to convert
+     * @param  string|Stringable $text Cyrilic string to convert
      * @return string       Latin string
      */
-    public static function cirToLat($text = ''): string
+    public static function cirToLat(string|Stringable $text = ''): string
     {
-        return strtr($text, static::$replacePairs);
+        return \strtr($text, static::REPLACE_PAIRS);
     }
 
     /**
      * Converts latin string to cyrilic
      *
-     * @param  string $text Latin string to convert
+     * @param  string|Stringable $text Latin string to convert
      * @return string       Cyrilic string
      */
-    public static function latToCir(string $text = ''): string
+    public static function latToCir(string|Stringable $text = ''): string
     {
-        return strtr($text, array_flip(static::$replacePairs));
+        static $flipped;
+
+        $flipped ??= \array_flip(static::REPLACE_PAIRS);
+
+        return \strtr($text, $flipped);
     }
 
     /**
      * Converts cyrilic string to latin with cut chars
      *
-     * @param  string $text Cyrilic string to convert
+     * @param  string|Stringable $text Cyrilic string to convert
      * @return string       Latin string with cut chars
      */
-    public static function cirToCutLat(string $text = ''): string
+    public static function cirToCutLat(string|Stringable $text = ''): string
     {
-        return strtr($text, array_merge(static::$replacePairs, static::$cutReplacePairs));
+
+        return \strtr($text, \array_merge(static::REPLACE_PAIRS, static::REPLACE_PAIRS_INTL));
     }
 
     /**
      * Converts latin string to latin with cut chars
      *
-     * @param  string $text Latin string to convert
+     * @param  string|Stringable $text Latin string to convert
      * @return string       Latin string with cut chars
      */
-    public static function latToCutLat($text = ''): string
+    public static function latToCutLat(string|Stringable $text = ''): string
     {
-        return strtr($text, static::$cutLatinChars);
+        return \strtr($text, static::LATIN_PAIRS_INTL);
     }
 }

@@ -1,33 +1,45 @@
-# Transliterator: Simple class to convert serbian words in cyrillic script to latin and vice-versa
+<div align="center">
 
-## About
+<h1 align="center" style="border-bottom: none; margin-bottom: 0px">Transliterator</h1>
+<h3 align="center" style="margin-top: 0px">Convert serbian cyrillic text to latin and vice-versa</h3>
 
-Transliterator is an easy-to-use class for PHP.
-It was made to be a class that you could quickly include into a project and have it working right away.
+
+[![Packagist Version](https://img.shields.io/packagist/v/oblak/transliterator?label=Release&style=flat-square)](https://packagist.org/packages/oblak/transliterator)
+![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/oblak/transliterator/php?label=PHP&logo=php&logoColor=white&logoSize=auto&style=flat-square)
+
+</div>
+
 
 ## Installation
 
-### Via Composer
+You can install the package via composer:
 
+```bash
+$ composer require oblak/transliterator
 ```
-composer require oblak/transliterator
-```
-## Basic Usage
 
-``` php
+## Usage
+
+```php
 <?php
 
-require 'vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use Oblak\Transliterator;
 
-echo Transliterator::cirToLat('Четири Чавчића риби гризу реп!');
-echo Transliterator::latToCir("Da l' si ikada mene voljela?");
-```
-
-### Output
+echo Transliterator::cirToLat('Четири Чавчића риби гризу реп!');    // Četiri Čavčića ribi grizu rep
+echo Transliterator::cirToCutLat('Четири Чавчића риби гризу реп!'); // Cetiri Cavcica ribi grizu rep
+echo Transliterator::latToCir("Da l' si ikada mene voljela?");      // Да л' си икада мене вољела?
 
 ```
-Četiri Čavčića ribi grizu rep
-Да л' си икада мене вољела?
+## Benchmarks
+
+Benchmark suite for [PHPBench](https://github.com/phpbench/phpbench) to compare various replacement methods.  
+We benchmark `strtr`, `str_replace`, `preg_replace`.
+
+To execute the benchmarks you can run the following command:
+
+```bash
+$ composer bench
 ```
+
