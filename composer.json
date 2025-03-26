@@ -29,7 +29,7 @@
     "phpbench/phpbench": "^1.4",
     "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan": "^1.12",
-    "phpunit/phpunit": "^10"
+    "phpunit/phpunit": "^12"
   },
   "replace": {
     "sgi/transliterator": "*"
