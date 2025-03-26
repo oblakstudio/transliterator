@@ -28,7 +28,7 @@
     "oblak/wordpress-coding-standard": "^1.2",
     "phpbench/phpbench": "^1.4",
     "phpstan/extension-installer": "^1.4",
-    "phpstan/phpstan": "^1.12",
+    "phpstan/phpstan": "^2.0",
     "phpunit/phpunit": "^10"
   },
   "replace": {
